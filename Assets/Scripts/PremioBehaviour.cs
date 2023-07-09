@@ -7,9 +7,6 @@ public class PremioBehaviour : MonoBehaviour
     private Transform playerPos;
     private float dist;
     private float angulo = 0;
-    [SerializeField]
-    private int premioType;
-
 
     void Start()
     {
@@ -19,11 +16,7 @@ public class PremioBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-         transform.Rotate(0, 100 * Time.deltaTime, 0); //hacemos que gire
-
-       
+    {       
             float pos_x = playerPos.transform.position.x + Mathf.Cos(angulo * Mathf.Deg2Rad) * dist; //esto va a situar al premio a lado de el player
             float pos_y = playerPos.transform.position.y+1f;
             float pos_z = playerPos.transform.position.z + Mathf.Sin(angulo * Mathf.Deg2Rad) * dist;
