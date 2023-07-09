@@ -5,26 +5,32 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform objetivo;              // Variable que representa el objetivo que el enemigo debe seguir
-    public float rangoDeAtaque = 10f;        // Rango máximo de distancia para atacar al objetivo
+    public float rangoDeAtaque = 6f;        // Rango mï¿½ximo de distancia para atacar al objetivo
     public float velocidadEnemigo = 4f;      // Velocidad a la que se mueve el enemigo
+    public Animator animator;
 
     void Update()
     {
         float distancia = CalcularDistancia();   // Calcula la distancia entre el enemigo y el objetivo
 
-        if (distancia <= rangoDeAtaque)   // Si la distancia está dentro del rango de ataque
+        if (distancia <= rangoDeAtaque)   // Si la distancia estï¿½ dentro del rango de ataque
         {
-            float deltaX = objetivo.position.x - transform.position.x;    // Calcula el cambio en la posición X entre el objetivo y el enemigo
-            float deltaZ = objetivo.position.z - transform.position.z;    // Calcula el cambio en la posición Z entre el objetivo y el enemigo
+            float deltaX = objetivo.position.x - transform.position.x;    // Calcula el cambio en la posiciï¿½n X entre el objetivo y el enemigo
+            float deltaZ = objetivo.position.z - transform.position.z;    // Calcula el cambio en la posiciï¿½n Z entre el objetivo y el enemigo
 
-            float pendiente = deltaZ / deltaX;    // Calcula la pendiente de la línea que conecta al enemigo y al objetivo
-            float ordenadaOrigen = objetivo.position.z - pendiente * objetivo.position.x;    // Calcula la ordenada al origen de la línea
+            float pendiente = deltaZ / deltaX;    // Calcula la pendiente de la lï¿½nea que conecta al enemigo y al objetivo
+            float ordenadaOrigen = objetivo.position.z - pendiente * objetivo.position.x;    // Calcula la ordenada al origen de la lï¿½nea
 
-            float nuevoX = transform.position.x + deltaX * velocidadEnemigo * Time.deltaTime;    // Calcula la nueva posición X del enemigo con velocidad
-            float nuevoZ = pendiente * nuevoX + ordenadaOrigen;    // Calcula la nueva posición Z del enemigo utilizando la función lineal
+            float nuevoX = transform.position.x + deltaX * velocidadEnemigo * Time.deltaTime;    // Calcula la nueva posiciï¿½n X del enemigo con velocidad
+            float nuevoZ = pendiente * nuevoX + ordenadaOrigen;    // Calcula la nueva posiciï¿½n Z del enemigo utilizando la funciï¿½n lineal
 
-            transform.position = new Vector3(nuevoX, transform.position.y, nuevoZ);    // Actualiza la posición del enemigo a la nueva posición calculada
+            transform.position = new Vector3(nuevoX, transform.position.y, nuevoZ);    // Actualiza la posiciï¿½n del enemigo a la nueva posiciï¿½n calculada
             transform.LookAt(objetivo);    // Hace que el enemigo mire hacia el objetivo
+            animator.SetBool("estaCaminando",true);
+            animator.SetBool("estaBailando",false);
+        }else{
+            animator.SetBool("estaCaminando",false);
+            animator.SetBool("estaBailando",true);
         }
     }
 
@@ -32,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         float distancia = Mathf.Sqrt(Mathf.Pow(objetivo.position.x - transform.position.x, 2f) +
             Mathf.Pow(objetivo.position.y - transform.position.y, 2f) +
-            Mathf.Pow(objetivo.position.z - transform.position.z, 2f));    // Calcula la distancia en línea recta entre el enemigo y el objetivo
+            Mathf.Pow(objetivo.position.z - transform.position.z, 2f));    // Calcula la distancia en lï¿½nea recta entre el enemigo y el objetivo
 
         return distancia;    // Devuelve la distancia calculada
     }
@@ -41,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            objetivo.position = new Vector3(-48f,6f,-95f);
+            objetivo.position = new Vector3(-24.5f,-4.51f,-65.7f);
             Debug.Log("toco");
         }
     }
