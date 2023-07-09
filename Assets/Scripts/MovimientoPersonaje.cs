@@ -54,12 +54,12 @@ public class MovimientoPersonaje : MonoBehaviour
         if (Physics.Raycast(transform.position, floor, 1.03f))
         {
             floorDetected = true;
-            Debug.Log("Si");
+         //   Debug.Log("Si");
         }
         else
         {
             floorDetected = false;
-            Debug.Log("No");
+           // Debug.Log("No");
         }
 
         if (isJump && floorDetected)
