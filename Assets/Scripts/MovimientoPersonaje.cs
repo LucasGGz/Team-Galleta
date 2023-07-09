@@ -11,6 +11,8 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool isJump = false;
     private bool floorDetected = false;
     public Animator animator;
+    [SerializeField]
+    private GameObject premio;
 
     void Start()
     {
@@ -68,6 +70,18 @@ public class MovimientoPersonaje : MonoBehaviour
         }
    
     }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Premio1") == true)
+        {
+            Destroy(other.gameObject);
+            Instantiate(premio, transform.position, transform.rotation);
+        }
+
+    
+    }
+
 
 
 }
