@@ -18,21 +18,23 @@ public class Definitivo : MonoBehaviour
          // Inicializar matriz bidimensional
          spawnPoints = new Vector3[filas, columnas];
 
-         // Calcular la posición y el tamaño total del área de spawn
+    /*     // Calcular la posición y el tamaño total del área de spawn
          float spawnAreaWidth = columnas * enemigoPrefab.transform.localScale.x;
          float spawnAreaHeight = filas * enemigoPrefab.transform.localScale.y;
-         Vector3 spawnAreaCenter = transform.position;
+         Vector3 spawnAreaCenter = transform.position;*/
 
          // Llenar la matriz con los puntos de spawn
          for (int fila = 0; fila < filas; fila++)
          {
              for (int columna = 0; columna < columnas; columna++)
              {
-                 // Calcular la posición en el mundo de acuerdo a las coordenadas
-                 Vector3 posicion = new Vector3(columna, 0, fila);
+                // Calcular la posición en el mundo de acuerdo a las coordenadas
+                float posX = columna * 1f; // Ajusta el espaciado horizontal de los puntos de spawn
+                float posZ = fila * 1f; // Ajusta el espaciado vertical de los puntos de spawn
+                Vector3 posicion = new Vector3(posX, 0, posZ);
 
-                 // Guardar el punto de spawn en la matriz
-                 spawnPoints[fila, columna] = posicion;
+                // Guardar el punto de spawn en la matriz
+                spawnPoints[fila, columna] = posicion;
              }
          }
 
