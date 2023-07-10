@@ -6,9 +6,11 @@ public class VictoriaCoportamiento : MonoBehaviour
 {
     [SerializeField]
     private GameObject premio;
+    [SerializeField]
+    private GameObject youwintext;
     void Start()
     {
-        
+        youwintext.SetActive(false); //hace que el texto no se vea al inicio
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class VictoriaCoportamiento : MonoBehaviour
             Debug.Log("Ganastee AHHHH");
             Destroy(gameObject);
             Destroy(other.gameObject);
+            youwintext.SetActive(true); //Activa el texto
         }
     }
 }
