@@ -68,6 +68,17 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             physicBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse); //impulsa al game objet
         }
+
+         if(Input.GetKey(KeyCode.LeftShift))
+        {
+         speed = 8f;
+         animator.SetBool("estaCorriendo",true);
+         animator.SetBool("estaCaminando",false);
+         animator.SetBool("estaQuieto",false);
+        }else{
+         speed = 6f;
+         animator.SetBool("estaCorriendo",false);
+        }
    
     }
     private void OnTriggerEnter(Collider other)
