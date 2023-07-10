@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-   private float speed;
+    private float speed;
     private float speedRotation;
     private float jumpForce;
     private Rigidbody physicBody;
@@ -18,7 +18,7 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        speed = 6f;
+        speed = 4f;
         speedRotation = 300f;
         jumpForce = 6f;
         physicBody = GetComponent<Rigidbody>();
@@ -50,6 +50,16 @@ public class MovimientoPersonaje : MonoBehaviour
 
          isJump = Input.GetButtonDown("Jump");
 
+         if(Input.GetButtonDown("Jump"))
+         {
+            animator.SetBool("estaCorriendo",false);
+            animator.SetBool("estaCaminando",false);
+            animator.SetBool("estaQuieto",false);
+            animator.SetBool("estaSaltando",true);
+         }else{
+            animator.SetBool("estaSaltando",false);
+         }
+
         Vector3 floor = transform.TransformDirection(Vector3.down);
         //SALTO
 
@@ -76,7 +86,7 @@ public class MovimientoPersonaje : MonoBehaviour
          animator.SetBool("estaCaminando",false);
          animator.SetBool("estaQuieto",false);
         }else{
-         speed = 6f;
+         speed = 4f;
          animator.SetBool("estaCorriendo",false);
         }
    
