@@ -12,7 +12,7 @@ private void OnCollisionEnter(Collision collision)
     if (collision.gameObject.tag == "Player")
     {
         collision.gameObject.transform.position = puntoInicio.position;
-        Debug.Log("Tocado por la bomba");
+        
     }
 }
 }
