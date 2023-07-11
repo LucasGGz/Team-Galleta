@@ -33,7 +33,7 @@ public class Matriz : MonoBehaviour
              }
          }
 
-         // Llamar a la función SpawnEnemy cada cierto tiempo (El tiempo entre cada llamada se especifica en la variable "tiempoEntreBombas").
+         // Llamar a la función SpawnBomba cada cierto tiempo (El tiempo entre cada llamada se especifica en la variable "tiempoEntreBombas").
          InvokeRepeating("SpawnBomba", 0f, tiempoEntreBombas);
 
          spawnOccupied = new bool[filas,columnas]; //Se inicializa la matriz "spawnOccupied" con el mismo tamaño que la matriz "spawnPoints".
