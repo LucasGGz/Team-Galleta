@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Definitivo : MonoBehaviour
 {
-     public GameObject enemigoPrefab; //Se declara una variable enemigoPrefab de tipo GameObject.
+     public GameObject bombas; //Se declara una variable bomba de tipo GameObject.
      public int filas; //Se definen las variables filas.
      public int columnas; //Se definen las variables columnas.
-     public float tiempoEntreEnemigos = 2f; // Tiempo en segundos entre cada instanciación de enemigo
-     public float tiempoVidaEnemigo = 5f; // Tiempo en segundos antes de destruir los enemigos
+     public float tiempoEntreBombas = 2f; // Tiempo en segundos entre cada instanciación de bomba
+     public float tiempoVidaBombas = 5f; // Tiempo en segundos antes de destruir las bombas
 
      private Vector3[,] spawnPoints; //Se declara una matriz bidimensional de tipo Vector3 llamada "spawnPoints" que almacenará los puntos de spawn.
      private bool[,] spawnOccupied; //Se declara una matriz bidimensional de tipo bool llamada "spawnOccupied" que almacenará información sobre si un punto de spawn está ocupado o no.
@@ -33,13 +33,13 @@ public class Definitivo : MonoBehaviour
              }
          }
 
-         // Llamar a la función SpawnEnemy cada cierto tiempo (El tiempo entre cada llamada se especifica en la variable "tiempoEntreEnemigos").
-         InvokeRepeating("SpawnEnemy", 0f, tiempoEntreEnemigos);
+         // Llamar a la función SpawnEnemy cada cierto tiempo (El tiempo entre cada llamada se especifica en la variable "tiempoEntreBombas").
+         InvokeRepeating("SpawnBomba", 0f, tiempoEntreBombas);
 
          spawnOccupied = new bool[filas,columnas]; //Se inicializa la matriz "spawnOccupied" con el mismo tamaño que la matriz "spawnPoints".
      }
 
-     private void SpawnEnemy() // El método "SpawnEnemy" se ejecuta cuando se llama desde la función "InvokeRepeating".
+     private void SpawnBomba() // El método "SpawnBomba" se ejecuta cuando se llama desde la función "InvokeRepeating".
      {
          // Escoger una posición de spawn aleatoria
          int filaAleatoria = Random.Range(0, filas);
@@ -55,11 +55,11 @@ public class Definitivo : MonoBehaviour
          //Marcar el punto de spawn como ocupado.
          spawnOccupied[filaAleatoria,columnaAleatoria] = true;
 
-          // Instanciar el enemigo en la posición aleatoria
-          GameObject enemigo = Instantiate(enemigoPrefab, posicionSpawn, Quaternion.identity);
+          // Instanciar la bomba en la posición aleatoria
+          GameObject bomba = Instantiate(bombas, posicionSpawn, Quaternion.identity);
 
-          // Destruir el enemigo después de tiempoVidaEnemigo segundos
-          Destroy(enemigo, tiempoVidaEnemigo);
+          // Destruir la bomba después de tiempoVidaBombas segundos
+          Destroy(bomba, tiempoVidaBombas);
      }
      }
     

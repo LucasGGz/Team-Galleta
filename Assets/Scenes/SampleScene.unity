@@ -57032,11 +57032,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc37d1df916f8c49b8be9bb3d191d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemigoPrefab: {fileID: 6203174042081677616, guid: 4a388f385fd2f43468ebc4e37755f9c3, type: 3}
+  bombas: {fileID: 6203174042081677616, guid: 4a388f385fd2f43468ebc4e37755f9c3, type: 3}
   filas: 13
   columnas: 16
-  tiempoEntreEnemigos: 1
-  tiempoVidaEnemigo: 13
+  tiempoEntreBombas: 1
+  tiempoVidaBombas: 14
 --- !u!4 &1739212802
 Transform:
   m_ObjectHideFlags: 0
