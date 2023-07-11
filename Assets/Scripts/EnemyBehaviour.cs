@@ -36,19 +36,20 @@ public class EnemyBehaviour : MonoBehaviour
 
     public float CalcularDistancia()
     {
-        float distancia = Mathf.Sqrt(Mathf.Pow(objetivo.position.x - transform.position.x, 2f) +
-            Mathf.Pow(objetivo.position.y - transform.position.y, 2f) +
-            Mathf.Pow(objetivo.position.z - transform.position.z, 2f));    // Calcula la distancia en lonea recta entre el enemigo y el objetivo
+        // Calcula la distancia en linea reacta entre las posiciones x, y, y z de dos objetos en un espacio tridimensional utilizando el teorema de Pitágoras. La raíz cuadrada de la suma de las diferencias al cuadrado de las coordenadas x, y, y z representa la distancia entre los dos objetos.
+        float distancia = Mathf.Sqrt(Mathf.Pow(objetivo.position.x - transform.position.x, 2f) + 
+            Mathf.Pow(objetivo.position.y - transform.position.y, 2f) + 
+            Mathf.Pow(objetivo.position.z - transform.position.z, 2f));
 
         return distancia;    // Devuelve la distancia calculada
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") //Si colisiona con el objeto que tiene de tag "Player", entonces...
         {
-            objetivo.position = new Vector3(-24.5f,-4.51f,-65.7f);
-            Debug.Log("toco");
+            objetivo.position = new Vector3(-24.5f,-4.51f,-65.7f); //Establece la posición del "Player" en un punto específico.
+            Debug.Log("toco"); //Muestra el mensaje por consola.
         }
     }
 }
