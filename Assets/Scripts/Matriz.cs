@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Definitivo : MonoBehaviour
+public class Matriz : MonoBehaviour
 {
      public GameObject bombas; //Se declara una variable bomba de tipo GameObject.
      public int filas; //Se definen las variables filas.
